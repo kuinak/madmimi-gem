@@ -100,8 +100,8 @@ class MadMimi
     do_request(AUDIENCE_MEMBERS_PATH, :post, :csv_file => csv_data)
   end
 
-  def add_to_list(email, list_name)
-    do_request("#{NEW_LISTS_PATH}/#{URI.escape(list_name)}/add", :post, :email => email)
+  def add_to_list(email, list_name, options = {})
+    do_request("#{NEW_LISTS_PATH}/#{URI.escape(list_name)}/add", :post, {:email => email}.merge(options))
   end
 
   def remove_from_list(email, list_name)
